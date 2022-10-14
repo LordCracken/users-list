@@ -1,11 +1,12 @@
-import {useState, FormEvent, ChangeEvent} from 'react';
+import { useState, FormEvent, ChangeEvent } from 'react';
 
 import Card from '../UI/Card';
 import Button from '../UI/Button';
 
+import { IAddUser } from '../../interfaces';
 import classes from './AddUser.module.css';
 
-const AddUser = () => {
+const AddUser = ({ onAddUser }: IAddUser) => {
   const [enteredUsername, setEnteredUsername] = useState<string>('');
   const [enteredAge, setEnteredAge] = useState<string>('');
 
@@ -20,9 +21,9 @@ const AddUser = () => {
       return;
     }
 
+    onAddUser(enteredUsername, +enteredAge);
     setEnteredUsername('');
     setEnteredAge('');
-    console.log(enteredUsername, enteredAge);
   };
 
   const usernameChangeHandler = (event: ChangeEvent<HTMLInputElement>) => {
