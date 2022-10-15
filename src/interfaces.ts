@@ -6,9 +6,20 @@ export interface IUser {
   age: number;
 }
 
+export interface IError {
+  title: string;
+  message: string;
+}
+
 export interface ICard {
   children: ReactNode;
   className?: string;
+}
+
+export interface IErrorModal {
+  title: string;
+  message: string;
+  onConfirm: () => void;
 }
 
 export interface IButton {
