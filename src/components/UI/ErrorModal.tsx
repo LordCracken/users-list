@@ -3,10 +3,12 @@ import { createPortal } from 'react-dom';
 import Card from './Card';
 import Button from './Button';
 
-import {IBackdrop, IErrorModal} from '../../interfaces';
+import { IBackdrop, IErrorModal } from '../../interfaces';
 import classes from './ErrorModal.module.css';
 
-const Backdrop = ({ onConfirm }: IBackdrop) => <div className={classes.backdrop} onClick={onConfirm}></div>;
+const Backdrop = ({ onConfirm }: IBackdrop) => (
+  <div className={classes.backdrop} onClick={onConfirm}></div>
+);
 
 const ModalOverlay = ({ title, message, onConfirm }: IErrorModal) => (
   <Card className={classes.modal}>
@@ -25,7 +27,10 @@ const ModalOverlay = ({ title, message, onConfirm }: IErrorModal) => (
 const ErrorModal = ({ title, message, onConfirm }: IErrorModal) => (
   <>
     {createPortal(<Backdrop onConfirm={onConfirm} />, document.getElementById('backdrop-root')!)}
-    {createPortal(<ModalOverlay title={title} message={message} onConfirm={onConfirm} />, document.getElementById('overlay-root')!)}
+    {createPortal(
+      <ModalOverlay title={title} message={message} onConfirm={onConfirm} />,
+      document.getElementById('overlay-root')!,
+    )}
   </>
 );
 
