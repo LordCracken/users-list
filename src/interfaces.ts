@@ -22,6 +22,10 @@ export interface IErrorModal {
   onConfirm: () => void;
 }
 
+export interface IBackdrop {
+  onConfirm: () => void;
+}
+
 export interface IButton {
   children: ReactNode;
   type?: 'button' | 'submit' | 'reset';
